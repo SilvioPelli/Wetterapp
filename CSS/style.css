@@ -1,0 +1,187 @@
+ html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: "Inter",sans-serif;
+    color: #F8FAFC;
+ }
+
+ *,
+ *::before,
+ *::after {
+    box-sizing: inherit;
+ }
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header > p {
+    padding: 1rem;
+}
+
+.logo {
+   padding: 1rem;
+}
+
+.logo p {
+   margin: 0 1rem 1rem;
+}
+
+h1 {
+    margin: 0;
+    padding: 1rem;
+    text-align: left;
+}
+
+ body {
+    min-height: 100vh;
+    padding: 1rem;
+    background-image:  radial-gradient(circle at top, #0730a1 0%, #0c1530 80%);
+    margin: 0;
+    padding: 0;
+    
+ }
+
+ /* Location */
+
+.location-card {
+   display: grid;
+   grid-template-columns: auto-fill, minmax(140px 1fr);
+   background-color: #0c1530;
+   border:1px solid #48aff8;
+   border-radius: 0.8rem;
+   margin: 2rem;
+   overflow: hidden;
+}
+
+.location-card p {
+   margin: 0.8rem;
+   display: inline-block;
+   width: 15rem;
+   height: 3rem;
+   padding: 1rem;
+
+}
+
+
+.location-card h3 {
+   color: #7b99b7;
+   display: inline-block;
+   margin: 1rem;
+}
+
+/* Wettermodel*/
+
+.wettermodell-card {
+   background-color: #0c1530;
+   border: 1px solid #48aff8;
+   border-radius: 1rem;
+   padding: 1rem;
+   margin: 2rem;
+}
+
+.wettermodell-card h3 {
+   color: #7b99b7;
+   margin-top: 0.5rem;
+}
+
+.wettermodell-wrapper {
+   display: flex;
+   justify-content: center;
+}
+
+.wettermodell-select {
+   text-align: center;
+}
+
+/* Instrumente */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
+    border-radius: 0.8rem;
+    margin: 2rem;
+    background-color: #0c1530;
+    border: 1px solid #48aff8;
+    padding: 1rem;
+}
+
+ .card {
+    background-color: #26418a;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    
+ }
+
+ h2 {
+    font-family: "Space Grotesk", sans-serif;
+ }
+
+ .temp,
+ .wind {
+    font-family: "Space Grotesk", sans-serif;
+ }
+
+ /* Buttons */
+.btnLocActu {
+   margin: 0.8rem 2rem;
+   padding: 1rem;
+   background-color: #26418a;
+   color: #F8FAFC;
+   border: 1px solid #48aff8;
+   border-radius: 1rem;
+   font-size: 1rem;
+   width: 15rem;
+   height: 3rem;
+   transition: color 0.3ms ease-out, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+ .btnLocActu:hover {
+   cursor: pointer;
+   background-color: #1c2f63;
+   border-color: #78cbea;
+ }
+
+ .btnLocActu:active {
+   color:rgb(255, 170, 0);
+   transform: translateY(2px) scale(0.98);
+ }
+
+.btn-wrapper {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 1rem;
+}
+
+
+ /* footer */
+
+ .footer-cards {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 0.5rem;
+   margin-left: 1rem;
+   margin-right: 1rem;
+ }
+
+
+ .footer-card {
+   font-size: 0.8rem;
+   color: grey;
+   text-align: center;
+   
+   
+ }
+
+ /* TODO: Fehlerdialog Styling überarbeiten !!! */
+ 
+ .fehlerDialog {
+
+ }

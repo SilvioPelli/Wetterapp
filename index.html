@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How is the weather?</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script src="skript.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>
+                ATMOS-PRAEDICTOR
+            </h1>
+            <p>
+                Präzision durch Berechnung. Gewissheit durch Daten.
+            </p>
+        </div>
+    </header>
+    <main>
+        <div class="location-card">
+            <h3>Standort</h3>
+            <p id="initialisierung">Standort wartet auf initialisierung...</p>
+            <div class="btn-wrapper">
+                <button class="btnLocActu" id="btn-loc">Lokalisierung einleiten</button>
+            </div>
+           
+        </div>
+<!------ Wird erst bei Tagesverlauf und Wochenverlauf wieder eingepflegt.
+        <div class="wettermodell-card">
+            <h3>Praediktor-Matrix laden</h3>
+            <div class="wettermodell-wrapper">
+                <select class="wettermodell-select" name="wettermodell" id="wettermodell">
+                    <option value="dwd_icon_d2">ICON D2</option>
+                    <option value="dwd_icon_eu">ICON EU</option>
+                    <option value="dwd_icon_global">ICON GLOBAL</option>
+                    <option value="ecmwf_ifs">ECMF</option>
+                    <option value="metno_nordic">MET Norway Nordic</option>
+                </select>
+            </div>
+        </div>
+----->
+        <div class="cards">
+            <div class="card">
+                <h3>Temperatur</h3>
+                <div class="temp" id="temp">--</div>
+            </div>
+            <div class="card">
+                <h3>Niederschlag</h3>
+                <div class="precip" id="precip">--</div>
+            </div>
+            <div class="card">
+                <h3>Wind</h3>
+                <div class="wind" id="wind">--</div>
+            </div>
+            <div class="card">
+                <h3>Böen</h3>
+                <div class="gusts" id="gusts">--</div>
+            </div>
+            <div class="card">
+                <h3>Feuchtigkeit</h3>
+                <div class="humidity" id="humidity">--</div>
+            </div>
+            <div class="card">
+                <h3>Taupunkt</h3>
+                <div class="dew" id="dew">--</div>
+            </div>
+            <div class="card">
+                <h3>Sichtweite</h3>
+                <div class="visibility" id="visibility">--</div>
+            </div>
+            <div class="card">
+                <h3>Luftdruck</h3>
+                <div class="pressure" id="pressure">--</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-cards">
+            <p class="footer-card">
+                &copy; 2026 ATMOS-PRAEDICTOR | openstreetmap | open-meteo
+            </p>
+        </div>
+    </footer>
+    <dialog class="fehlerDialog" id="fehlerDialog">
+        <p id="fehlerMessage"></p>
+        <button id="fehlerOk">Ok</button>
+    </dialog>
+</body>
+
+</html>
