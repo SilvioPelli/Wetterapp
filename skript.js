@@ -192,7 +192,10 @@ async function getWetter(laengengrad, breitengrad) {
               /* Wetterdaten abfrage und sicherung als json objekt in data */
               const anfrage = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${breitengrad}&longitude=${laengengrad}&daily=weather_code,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant,wind_gusts_10m_max,uv_index_max,temperature_2m_max,temperature_2m_min,sunrise,sunset,sunshine_duration,temperature_2m_mean,apparent_temperature_mean&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,rain,visibility,wind_speed_10m,snowfall,showers,precipitation_probability,precipitation,apparent_temperature,wind_gusts_10m,wind_direction_10m,temperature_80m,uv_index,sunshine_duration,snow_depth,surface_pressure,cloud_cover&models=ecmwf_ifs,best_match,dwd_icon_d2,dwd_icon_eu,dwd_icon_global,metno_nordic&current=precipitation,wind_speed_10m,wind_direction_10m,wind_gusts_10m,surface_pressure,cloud_cover,relative_humidity_2m,temperature_2m,apparent_temperature,dew_point_2m,visibility&minutely_15=wind_speed_10m,wind_direction_10m,temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,visibility,wind_gusts_10m,sunshine_duration,freezing_level_height,snowfall_height,snowfall,rain&timezone=Europe%2FBerlin`);
               const data = await anfrage.json();
-       
+              
+              /* Leert das days Array. Ansonsten wäre ein Daten Anhäufungsproblem im Array beim mehrmaligen auslösen von getWetter! */
+              days.length = 0;
+
               /* for...of Schleife, für die Wetterdaten die in die 8 Cards geschrieben werden sollen */
               for (const wetterDatenCards of cards) {
                      const card = document.getElementById(wetterDatenCards.htmlId);
