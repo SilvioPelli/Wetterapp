@@ -139,6 +139,8 @@ const ini = document.getElementById("initialisierung");
 const fehler = document.getElementById("fehlerDialog");
 const fehlerButton = document.getElementById("fehlerOk");
 const fehlerText = document.getElementById("fehlerMessage");
+const tagCard = document.getElementById("wochenTrend");
+
 /*
 Werden bis zum implementieren des DropDown Menü und der Detailansicht nicht benötigt.
 const wetterModel = document.getElementById("wettermodell");
@@ -159,6 +161,38 @@ const cards = [
 
 /* Array für 7 Tage Vorherssage */
 const days = [];
+
+/* Wettercodes Objekt */
+const wetterCodes = {
+       0: "Klar",
+       1: "Leicht Bewölkt",
+       2: "Teilweise Bewölkt",
+       3: "Bewölkt",
+       45: "Nebel",
+       48: "Eisnebel",
+       51: "Leichter Nieselregen",
+       53: "Moderater Nieselregen",
+       55: "Starker Nieselregen",
+       56: "Leichter gefrierender Nieselregen",
+       57: "Starker gefrierender Nieselregen",
+       61: "Leichter Regen",
+       63: "Moderater Regen",
+       65: "Starker Regen",
+       66: "Leichter gefrierender Regen",
+       67: "Starker gefrierender Regen",
+       71: "Leichter Schneefall",
+       73: "Moderater Schneefall",
+       75: "Starker Schneefall",
+       77: "Schnekörner",
+       80: "Leichter Regenschauer",
+       81: "Moderater Regenschauer",
+       82: "heftiger Regenschauer",
+       85: "leichter Schneeschauer",
+       86: "Starker Schneeschauer",
+       95: "Gewitter",
+       96: "Gewitter & leichter Hagel",
+       99: "Gewitter & schwerer Hagel"
+}
 
 /* reverse geolocation mit nominatim API. Zeigt den Ortsname des User- Aufenthaltsort  */
 async function getStandort(laengengrad, breitengrad) {
@@ -216,7 +250,24 @@ async function getWetter(laengengrad, breitengrad) {
                             uv: data.daily.uv_index_max_best_match[i]
                      }
                      days.push(day);
+                     console.log(day);
               };
+
+              let html = "";
+              for (const eintrag of days) {
+                     html += `<div class="tagCard">
+                                   <p>${eintrag.datum}</p>
+                                   <p>${eintrag.tempMax} °C / ${eintrag.tempMin} °C</p>
+                                   <p>${wetterCodes[eintrag.code]}</p>
+                                   <p>${eintrag.preci} mm</p>
+                                   <p>${eintrag.wind} km/h</p>
+                                   <p>${eintrag.gusts} km/h</p>
+                                   <p>${eintrag.windDirec} °</p>
+                                   <p>${eintrag.uv}</p>
+                            </div>`;
+              }
+              tagCard.innerHTML = html;
+
               
        } catch (error) {
               fehlerText.textContent = "Hmm, es scheint ein Fehler zu geben. Check dein Internet und probiert es nochmal!"
