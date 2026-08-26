@@ -252,7 +252,7 @@ async function getWetter(laengengrad, breitengrad) {
                      days.push(day);
                      console.log(day);
               };
-
+              /* Erstellt 7 neue Cards mit 8 API Werten im HTML für die 7 Tage Vorhersage */
               let html = "";
               for (const eintrag of days) {
                      html += `<div class="tagCard">
