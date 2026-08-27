@@ -296,11 +296,11 @@ async function getWetter(laengengrad, breitengrad) {
                                    <p><span class="wochentagFett">${wochentag}</span> - ${datum}</p>
                                    <p><span class="max-tag">Max.</span> ${Math.round(eintrag.tempMax)} °C <span class="min-tag">Min. </span>${Math.round(eintrag.tempMin)} °C</p>
                                    <p>${wetterCodes[eintrag.code]} ${wetterIcons[eintrag.code]}</p>
-                                   <p>Niederschlag ${Math.round(eintrag.preci)} mm</p>
-                                   <p>Wind ${Math.round(eintrag.wind)} km/h</p>
-                                   <p>Böen ${Math.round(eintrag.gusts)} km/h</p>
-                                   <p>Windrichtung ${gradZuKompass}</p>
-                                   <p>UV-Index ${Math.round(eintrag.uv)}</p>
+                                   <p>Niederschlag : ${Math.round(eintrag.preci)} mm</p>
+                                   <p>Wind : ${Math.round(eintrag.wind)} km/h</p>
+                                   <p>Böen : ${Math.round(eintrag.gusts)} km/h</p>
+                                   <p>Windrichtung : ${gradZuKompass}</p>
+                                   <p>UV-Index : ${Math.round(eintrag.uv)}</p>
                             </div>`;
               }
               tagCard.innerHTML = html;
