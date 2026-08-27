@@ -183,7 +183,7 @@ const wetterCodes = {
        71: "Leichter Schneefall",
        73: "Moderater Schneefall",
        75: "Starker Schneefall",
-       77: "Schnekörner",
+       77: "Schneekörner",
        80: "Leichter Regenschauer",
        81: "Moderater Regenschauer",
        82: "heftiger Regenschauer",
@@ -192,6 +192,38 @@ const wetterCodes = {
        95: "Gewitter",
        96: "Gewitter & leichter Hagel",
        99: "Gewitter & schwerer Hagel"
+}
+
+/* Wetter-Icons */
+const wetterIcons = {
+       0: "☀️",
+       1: "🌤️",
+       2: "⛅️",
+       3: "☁️",
+       45: "🌫️",
+       48: "🧊🌫️",
+       51: "🌧️",
+       53: "🌧️🌧️",
+       55: "🌧️🌧️🌧️",
+       56: "❄️🌧️",
+       57: "❄️🌧️🌧️🌧️",
+       61: "🌧️",
+       63: "🌧️🌧️",
+       65: "🌧️🌧️🌧️",
+       66: "❄️🌧️",
+       67: "❄️🌧️🌧️🌧️",
+       71: "🌨️",
+       73: "🌨️🌨️",
+       75: "🌨️🌨️🌨️",
+       77: "☃️",
+       80: "🌧️",
+       81: "🌧️🌧️🌧️",
+       82: "🌧️🌧️🌧️🌧️",
+       85: "❄️🌧️🌨️",
+       86: "❄️🌧️🌨️🌨️",
+       95: "⛈️",
+       96: "⛈️🧊",
+       99: "⛈️🧊🧊"
 }
 
 /* reverse geolocation mit nominatim API. Zeigt den Ortsname des User- Aufenthaltsort  */
@@ -255,15 +287,18 @@ async function getWetter(laengengrad, breitengrad) {
               /* Erstellt 7 neue Cards mit 8 API Werten im HTML für die 7 Tage Vorhersage */
               let html = "";
               for (const eintrag of days) {
+                     const datumsObjekt = new Date(eintrag.datum);
+                     const wochentag = datumsObjekt.toLocaleDateString("de-DE", {weekday: "long"});
+                     const datum = datumsObjekt.toLocaleDateString("de-De", {day: "2-digit", month: "2-digit", year: "2-digit"});
                      html += `<div class="tagCard">
-                                   <p>${eintrag.datum}</p>
-                                   <p>${eintrag.tempMax} °C / ${eintrag.tempMin} °C</p>
-                                   <p>${wetterCodes[eintrag.code]}</p>
-                                   <p>${eintrag.preci} mm</p>
-                                   <p>${eintrag.wind} km/h</p>
-                                   <p>${eintrag.gusts} km/h</p>
-                                   <p>${eintrag.windDirec} °</p>
-                                   <p>${eintrag.uv}</p>
+                                   <p><span class="wochentagFett">${wochentag}</span> - ${datum}</p>
+                                   <p><span class="max-tag">Max.</span> ${Math.round(eintrag.tempMax)} °C <span class="min-tag">Min. </span>${Math.round(eintrag.tempMin)} °C</p>
+                                   <p>${wetterCodes[eintrag.code]} ${wetterIcons[eintrag.code]}</p>
+                                   <p>Niederschlag ${Math.round(eintrag.preci)} mm</p>
+                                   <p>Wind ${Math.round(eintrag.wind)} km/h</p>
+                                   <p>Böen ${Math.round(eintrag.gusts)} km/h</p>
+                                   <p>Windrichtung ${eintrag.windDirec} °</p>
+                                   <p>UV-Index ${Math.round(eintrag.uv)}</p>
                             </div>`;
               }
               tagCard.innerHTML = html;

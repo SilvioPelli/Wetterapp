@@ -101,7 +101,7 @@ h1 {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 16px;
     border-radius: 0.8rem;
     margin: 2rem;
@@ -130,7 +130,13 @@ h1 {
  }
 
  .temp,
- .wind {
+ .wind,
+ .precip,
+ .gusts,
+ .humidity,
+ .dew,
+ .visibility,
+ .pressure {
     font-family: "Space Grotesk", sans-serif;
  }
 
@@ -148,6 +154,7 @@ h1 {
    margin-left: 1rem;
    margin-top: 1rem;
    margin-bottom: 0.5rem;
+   font-family: "Inter", sans-serif;
 }
 
 .wochentage {
@@ -162,12 +169,34 @@ h1 {
    background-color: #26418a;
    border: 1px solid #48aff8;
    border-radius: 0.8rem;
-   min-width: 150px;
+   min-width: 220px;
+   font-family: "Space Grotesk", sans-serif;
+   
 }
 
 .tagCard p {
    margin: 0.5rem;
 }
+
+
+.tagCard  p:nth-child(2) {
+   font-weight: bold;
+
+}
+
+.wochentagFett { 
+   font-weight: bold;
+}
+
+.max-tag {
+   color: #d4694f;
+}
+
+.min-tag {
+   color: #78cbea;
+}
+
+
 
  /* Buttons */
 .btnLocActu {
